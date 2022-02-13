@@ -6,12 +6,9 @@ import com.example.fantasticrestaurantv1.users.domain.UserType;
 import com.example.fantasticrestaurantv1.users.service.UserService;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.ClientSession;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.CreateCollectionOptions;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,7 +18,7 @@ import java.time.LocalDateTime;
 @Configuration
 public class DatabaseConfig {
 
-    private static final String MainDatabase = "FANTASTIC-RESTAURANTS-DB";
+    private static final String MainDatabase = "Fantastic-Restaurants-DB";
     private static final String DatabaseCol = "restaurantsDb";
     private static final String DatabaseUrl = "DATABASE_URL";
     private UserService userService;
@@ -33,21 +30,29 @@ public class DatabaseConfig {
     MongoClient mongoClient = MongoClients.create(settings);
     MongoDatabase database = mongoClient.getDatabase(MainDatabase);
 
-    public MongoDatabase getDatabase() {
-        return database;
-    }
-
+    @Bean
     public void setDatabase(MongoDatabase database) {
         this.database = database;
     }
 
+    @Bean
     public void upsertCol() {
-        database.listCollections();
+        Role role = new Role();
+
+        setDatabase(database);
+        System.out.println(database.listCollections());
         database.getCollection(DatabaseCol);
+
+        database.getCollection(String.valueOf(role));
+        database.getCollection("User");
+        database.getCollection("Restaurants");
+
         database.createCollection(DatabaseCol);
     }
 
+    @Bean
     public void generateAdminUser() {
+        upsertCol();
         userService.createRole(new Role(1, System.getenv("ADMIN_ROLE")));
 
         userService.registerUser(new User(
