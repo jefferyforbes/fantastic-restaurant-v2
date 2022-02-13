@@ -9,11 +9,19 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DatabaseConfig {
-    ConnectionString connectionString =
-            new ConnectionString(System.getenv("DATABASE_URL"));
+
+    private static final String MainDatabase = "FANTASTIC-RESTAURANTS-DB";
+    private static final String DatabaseCol = "restaurantsDb";
+    private static final String DatabaseUrl = "DATABASE_URL";
+
+    ConnectionString connectionString = new ConnectionString(System.getenv(DatabaseUrl));
     MongoClientSettings settings = MongoClientSettings.builder()
             .applyConnectionString(connectionString)
             .build();
     MongoClient mongoClient = MongoClients.create(settings);
-    MongoDatabase database = mongoClient.getDatabase("restaurantsDB");
+    MongoDatabase database = mongoClient.getDatabase(MainDatabase);
+
+    public void upsertCol() {
+        database.getCollection(DatabaseCol);
+    }
 }
