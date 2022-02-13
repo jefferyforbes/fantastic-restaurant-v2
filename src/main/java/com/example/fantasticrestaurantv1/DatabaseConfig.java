@@ -31,15 +31,8 @@ public class DatabaseConfig {
     MongoDatabase database = mongoClient.getDatabase(MainDatabase);
 
     @Bean
-    public void setDatabase(MongoDatabase database) {
-        this.database = database;
-    }
-
-    @Bean
     public void upsertCol() {
         Role role = new Role();
-
-        setDatabase(database);
         System.out.println(database.listCollections());
         database.getCollection(DatabaseCol);
 
