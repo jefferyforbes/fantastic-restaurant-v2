@@ -1,11 +1,11 @@
 package com.example.fantasticrestaurantv1.restaurants.repository;
 
 import com.example.fantasticrestaurantv1.restaurants.domain.RestaurantItem;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
 
-public interface RestaurantItemRepository extends MongoRepository<RestaurantItem, Integer> {
+public interface RestaurantItemRepository extends JpaRepository<RestaurantItem, Integer> {
 
     RestaurantItem findRestaurantItemByName(String name);
 
