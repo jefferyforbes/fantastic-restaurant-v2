@@ -1,17 +1,22 @@
 package com.example.fantasticrestaurantv1.users.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Setter;
 
-@Data
-@Document
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Role {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 }

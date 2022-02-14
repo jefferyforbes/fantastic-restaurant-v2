@@ -1,10 +1,8 @@
 package com.example.fantasticrestaurantv1.restaurants.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.index.Indexed;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +19,6 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Indexed(unique = true)
     private String name;
     private String ownerName;
     private String email;
