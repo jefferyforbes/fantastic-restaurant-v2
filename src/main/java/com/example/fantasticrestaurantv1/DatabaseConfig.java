@@ -14,7 +14,11 @@ import org.springframework.context.annotation.Configuration;
 public class DatabaseConfig {
 
     private static final String MainDatabase = "Fantastic-Restaurants-DB";
-    private static final String DatabaseCol = "restaurantsDb";
+    private static final String RESTAURANT_COL = "RestaurantDb";
+    private static final String RESTAURANT_ITEM_COL = "RestaurantItemDb";
+    private static final String ORDER_COL = "OrderDb";
+    private static final String USER_COL = "UserDb";
+    private static final String ROLE_COL = "RoleDb";
     private static final String DatabaseUrl = "DATABASE_URL";
 
     ConnectionString connectionString = new ConnectionString(System.getenv(DatabaseUrl));
@@ -25,15 +29,19 @@ public class DatabaseConfig {
     MongoDatabase database = mongoClient.getDatabase(MainDatabase);
 
     public void upsertCol() {
-        Role role = new Role();
         System.out.println(database.listCollections());
-        database.getCollection(DatabaseCol);
+        database.createCollection(RESTAURANT_COL);
+        database.createCollection(RESTAURANT_ITEM_COL);
+        database.createCollection(ORDER_COL);
+        database.createCollection(USER_COL);
+        database.createCollection(ROLE_COL);
 
-        database.getCollection(String.valueOf(role));
-        database.getCollection("User");
-        database.getCollection("Restaurants");
-
-        database.createCollection(DatabaseCol);
+        database.getCollection(RESTAURANT_COL);
+        database.getCollection(RESTAURANT_ITEM_COL);
+        database.getCollection(ORDER_COL);
+        database.getCollection(USER_COL);
+        database.getCollection(ROLE_COL);
+        System.out.println(database.listCollectionNames());
     }
 
     @Bean
