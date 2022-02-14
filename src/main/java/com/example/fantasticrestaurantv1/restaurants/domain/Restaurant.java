@@ -1,18 +1,26 @@
 package com.example.fantasticrestaurantv1.restaurants.domain;
 
-import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Collection;
 
-@Data
-@Document
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Restaurant {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @Indexed(unique = true)
     private String name;
     private String ownerName;
@@ -21,7 +29,7 @@ public class Restaurant {
     private Collection<RestaurantItem> restaurantItems;
 
     public Restaurant(
-            Integer id,
+            Long id,
             String name,
             String ownerName,
             String email,

@@ -8,24 +8,28 @@ that can be inserted, deleted or modified in the mongodb */
 /* [Indexed] Annotation with the ("unique=true") parameters, means that the database will not
 allow the creation of any new documents with the same value for that parameter */
 
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Data
-@Document
+@Entity
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
 public class User {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
-    @Indexed(unique = true)
     private String username;
     private String password;
     private String email;

@@ -19,7 +19,7 @@ public interface UserService {
 
     Collection<Role> getUserRoles(String username);
 
-    User getUserById(String id);
+    User getUserById(Long id);
 
     UserType getUserType(String username);
 

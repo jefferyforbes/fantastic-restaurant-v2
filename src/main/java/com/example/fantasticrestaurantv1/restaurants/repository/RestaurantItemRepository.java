@@ -9,5 +9,5 @@ public interface RestaurantItemRepository extends JpaRepository<RestaurantItem, 
 
     RestaurantItem findRestaurantItemByName(String name);
 
-    Collection<RestaurantItem> findAllRestaurantItemsById(Integer id);
+    Collection<RestaurantItem> findAllRestaurantItemsById(Long id);
 }
