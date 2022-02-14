@@ -35,7 +35,26 @@ public class FantasticRestaurantV1Application {
 		prop.setProperty("java.runtime.version", "17");
 		prop.setProperty("java", "java.runtime.version=17");
 
+		System.out.println(prop.getProperty("practice"));
 		System.out.println(prop.keySet());
 		return null;
 	}
+
+    @Bean
+    CommandLineRunner runner(UserService userService) {
+        userService.createRole(new Role(1, System.getenv("ADMIN_ROLE")));
+
+        userService.registerUser(new User(
+				"Jeffery Forbes",
+				System.getenv("ADMIN_USERNAME"),
+				System.getenv("ADMIN_PASSWORD"),
+				System.getenv("ADMIN_EMAIL"),
+				System.getenv("ADMIN_PHONE_NUMBER"),
+                LocalDate.now(),
+                UserType.PERSONAL,
+                LocalDateTime.now(),
+                LocalDateTime.now()));
+
+        return null;
+    }
 }
