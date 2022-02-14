@@ -45,7 +45,7 @@ public class DatabaseConfig {
     }
 
     @Bean
-    CommandLineRunner runner() {
+    CommandLineRunner dbRunner() {
         upsertCol();
         return null;
     };
