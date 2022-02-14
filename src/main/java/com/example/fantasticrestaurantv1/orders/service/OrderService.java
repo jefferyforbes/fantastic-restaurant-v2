@@ -10,9 +10,9 @@ public interface OrderService {
 
     Order createNewOrder(Order order, User user);
 
-    Collection<Order> getAllOrdersForUser(Integer id);
+    Collection<Order> getAllOrdersForUser(Long id);
 
-    Optional<Order> getOrderById(Integer id);
+    Optional<Order> getOrderById(Long id);
 
     Collection<Order> getAllOrders();
 }

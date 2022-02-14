@@ -28,13 +28,13 @@ public class OrderController {
 
     @GetMapping("/orders/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Collection<Order>> getAllOrdersById(@PathVariable Integer id) {
+    public ResponseEntity<Collection<Order>> getAllOrdersById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.getAllOrdersForUser(id));
     }
 
     @GetMapping("/order/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Optional<Order>> getOrder(@PathVariable Integer id) {
+    public ResponseEntity<Optional<Order>> getOrder(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.getOrderById(id));
     }
 

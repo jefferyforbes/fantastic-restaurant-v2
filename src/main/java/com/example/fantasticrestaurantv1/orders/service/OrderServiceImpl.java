@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Collection<Order> getAllOrdersForUser(Integer id) {
+    public Collection<Order> getAllOrdersForUser(Long id) {
         return orderRepository.findAllByUserId(id);
     }
 
@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
     public Collection<Order> getAllOrders() { return orderRepository.findAll(); }
 
     @Override
-    public Optional<Order> getOrderById(Integer id) {
+    public Optional<Order> getOrderById(Long id) {
         return orderRepository.findById(id);
     }
 }
