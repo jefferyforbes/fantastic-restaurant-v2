@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
 
-public interface RestaurantItemRepository extends JpaRepository<RestaurantItem, Integer> {
+public interface RestaurantItemRepository extends JpaRepository<RestaurantItem, Long> {
 
     RestaurantItem findRestaurantItemByName(String name);
 

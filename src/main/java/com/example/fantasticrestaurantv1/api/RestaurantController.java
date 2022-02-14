@@ -29,19 +29,19 @@ public class RestaurantController {
 
     @GetMapping("/restaurantItems/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Collection<RestaurantItem>> getAllRestaurantItems(@PathVariable Integer id) {
+    public ResponseEntity<Collection<RestaurantItem>> getAllRestaurantItems(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.getAllRestaurantItems(id));
     }
 
     @GetMapping("/restaurantItem/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Optional<RestaurantItem>> getRestaurantItem(@PathVariable Integer id) {
+    public ResponseEntity<Optional<RestaurantItem>> getRestaurantItem(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.getRestaurantItemById(id));
     }
 
     @GetMapping("/restaurant/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Optional<Restaurant>> getRestaurant(@PathVariable Integer id) {
+    public ResponseEntity<Optional<Restaurant>> getRestaurant(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.getRestaurantById(id));
     }
 

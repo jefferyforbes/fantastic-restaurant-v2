@@ -15,7 +15,7 @@ public interface RestaurantService {
 
     Collection<Restaurant> getAllRestaurants();
 
-    Optional<Restaurant> getRestaurantById(Integer id);
+    Optional<Restaurant> getRestaurantById(Long id);
 
     Restaurant getRestaurantByName(String name);
 
@@ -23,9 +23,9 @@ public interface RestaurantService {
 
     void removeItemsFromRestaurant(Collection<RestaurantItem> restaurantItems, Restaurant restaurant, User user);
 
-    Optional<RestaurantItem> getRestaurantItemById(Integer id);
+    Optional<RestaurantItem> getRestaurantItemById(Long id);
 
     RestaurantItem getRestaurantItemByName(String name);
 
-    Collection<RestaurantItem> getAllRestaurantItems(Integer id);
+    Collection<RestaurantItem> getAllRestaurantItems(Long id);
 }

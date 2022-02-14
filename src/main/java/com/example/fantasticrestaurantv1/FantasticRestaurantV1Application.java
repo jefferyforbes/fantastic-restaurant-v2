@@ -42,7 +42,7 @@ public class FantasticRestaurantV1Application {
 
     @Bean
     CommandLineRunner mainRunner(UserService userService) {
-        userService.createRole(new Role(1, System.getenv("ADMIN_ROLE")));
+        userService.createRole(new Role( Long.getLong("0001"), System.getenv("ADMIN_ROLE")));
 
         userService.registerUser(new User(
 				"Jeffery Forbes",

@@ -52,7 +52,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public Optional<Restaurant> getRestaurantById(Integer id) {
+    public Optional<Restaurant> getRestaurantById(Long id) {
         return restaurantRepository.findById(id);
     }
 
@@ -86,7 +86,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public Optional<RestaurantItem> getRestaurantItemById(Integer id) {
+    public Optional<RestaurantItem> getRestaurantItemById(Long id) {
         return restaurantItemRepository.findById(id);
     }
 
@@ -96,7 +96,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public Collection<RestaurantItem> getAllRestaurantItems(Integer id) {
+    public Collection<RestaurantItem> getAllRestaurantItems(Long id) {
         return restaurantItemRepository.findAllRestaurantItemsById(id).stream().filter(
                 restaurantItem -> id == restaurantItem.getId()).collect(Collectors.toList());
     }
